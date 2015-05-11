@@ -4,6 +4,7 @@ accommodate the tallest/widest items in a list.
 
 @element basic-sliding-viewport-fit
 -->
+<!-- TODO: Rationalize this with basic-sliding-viewport -->
 
 <link rel="import" href="../basic-aspect/basic-aspect.html">
 
@@ -34,7 +35,9 @@ accommodate the tallest/widest items in a list.
 </dom-module>
 
 <script>
-Polymer(mixin(BasicAspectMixin, {
+Polymer({
+
+  behaviors: [Basic.Aspect],
 
   contribute: {
 
@@ -103,7 +106,7 @@ Polymer(mixin(BasicAspectMixin, {
     if (index === 0 && position < 0) {
       // Apply tension from the left edge.
       dampenedPosition = -this._damping(-position);
-    } else if (index === this.count - 1 && position > 0) {
+    } else if (index === count - 1 && position > 0) {
       // Apply tension from the right edge.
       dampenedPosition = this._damping(position);
     } else {
@@ -142,5 +145,5 @@ Polymer(mixin(BasicAspectMixin, {
 
   _position: 0
 
-}));
+});
 </script>
